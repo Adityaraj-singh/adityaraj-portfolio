@@ -1,4 +1,4 @@
-# Achyut Katiyar Portfolio
+# Aditya Raj Singh Portfolio
 
 A modern, responsive portfolio website built with Next.js 14, Tailwind CSS, and Framer Motion featuring a stunning dark mode with animated stars background.
 
@@ -155,12 +155,12 @@ If you'd like to use this template for your own portfolio website, you are welco
 ### Attribution Requirements
 
 1. **Required Attribution**:
-   - You must maintain the original credit in the footer: "Original design by [Achyut Katiyar](https://github.com/achyut21)"
+   - You must maintain the original credit in the footer: "Original design by [Aditya Raj Singh](https://github.com/achyut21)"
    - Keep the attribution link in the README
 
 2. **GitHub Repository**:
    - If you fork or clone this repository, please star the original repository
-   - Include a clear statement in your README indicating that your project is based on Achyut Katiyar's portfolio template
+   - Include a clear statement in your README indicating that your project is based on Aditya Raj Singh's portfolio template
 
 3. **Customization Requirements**:
    - Change the personal information to your own
@@ -178,7 +178,7 @@ If you'd like to use this template for your own portfolio website, you are welco
 For your README:
 
 ```markdown
-This portfolio is based on [Achyut Katiyar's Portfolio Template](https://github.com/achyut21/portfolio-website),
+This portfolio is based on [Aditya Raj Singh's Portfolio Template](https://github.com/achyut21/portfolio-website),
 customized with my personal information and projects.
 ```
 
@@ -186,7 +186,7 @@ For your website footer:
 
 ```html
 Design inspired by
-<a href="https://github.com/achyut21" target="_blank" rel="noopener noreferrer">Achyut Katiyar</a>
+<a href="https://github.com/achyut21" target="_blank" rel="noopener noreferrer">Aditya Raj Singh</a>
 ```
 
 ## Deployment
@@ -208,7 +208,7 @@ For other platforms, refer to the [Next.js deployment documentation](https://nex
 
 ## Credits
 
-- Design & Development: [Achyut Katiyar](https://github.com/achyut21)
+- Design & Development: [Aditya Raj Singh](https://github.com/achyut21)
 - UI Components: [shadcn/ui](https://ui.shadcn.com/)
 - Icons: [Lucide React](https://lucide.dev/)
 - Animation: [Framer Motion](https://www.framer.com/motion/)
@@ -220,4 +220,4 @@ This project is available for personal and educational use with required attribu
 
 ---
 
-© 2025 Achyut Katiyar. All Rights Reserved.
+© 2025 Aditya Raj Singh. All Rights Reserved.

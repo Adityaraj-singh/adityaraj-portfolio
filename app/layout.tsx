@@ -3,14 +3,14 @@ import { ClientLayout } from "./client-layout";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Achyut Katiyar | Software Engineer",
+  title: "Aditya Raj Singh | Software Engineer",
   description:
     "Full Stack Software Engineer with 5+ years of experience building scalable applications using React.js, Next.js, Angular, Node.js, and TypeScript. Passionate about delivering high-performance solutions for supply chain and demand planning products, driving business impact through scalable architecture, performance optimization, and intuitive user experiences",
   metadataBase: new URL("https://achyutkatiyar.com"),
 
   // Basic metadata
   applicationName: "Aditya Raj Singh Protfolio",
-  authors: [{ name: "Achyut Katiyar" }],
+  authors: [{ name: "Aditya Raj Singh" }],
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
@@ -26,17 +26,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://achyutkatiyar.com",
-    title: "Achyut Katiyar | Software Engineer",
+    title: "Aditya Raj Singh | Software Engineer",
     description:
       "Software Engineer building full-stack applications and decentralized systems. MS CS at Northeastern. Co-Chair of MIT Bitcoin Expo.",
-    siteName: "Achyut Katiyar",
+    siteName: "Aditya Raj Singh",
     locale: "en_US",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Achyut Katiyar - Portfolio",
+        alt: "Aditya Raj Singh - Portfolio",
       },
     ],
   },

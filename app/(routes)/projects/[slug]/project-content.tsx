@@ -134,22 +134,6 @@ export function ProjectContent({ project }: ProjectContentProps) {
                           Links
                         </h3>
                         <div className="flex flex-col gap-2">
-                          {project.github && (
-                            <Button
-                              variant="outline"
-                              className="w-full justify-start"
-                              asChild
-                            >
-                              <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <Github className="mr-2 h-4 w-4" />
-                                GitHub Repository
-                              </a>
-                            </Button>
-                          )}
                           {project.liveUrl && (
                             <Button
                               variant="outline"

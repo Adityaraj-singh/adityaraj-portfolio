@@ -23,7 +23,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Aditya Raj Singh</h3>
             <p className="max-w-xs text-sm text-muted-foreground">
-              Software Engineer based in Hyderabad. B.Tech Computer Science. Building
+              Software Engineer based in Hyderabad |  B.Tech Computer Science | Building
               full-stack applications and decentralized systems.
             </p>
           </div>
@@ -125,7 +125,7 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center text-sm text-muted-foreground">
               <Copyright className="mr-1 h-3.5 w-3.5" />
-              <span>{new Date().getFullYear()} Achyut Katiyar. All rights reserved.</span>
+              <span>{new Date().getFullYear()} Aditya Raj Singh. All rights reserved.</span>
             </div>
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <span>Built with</span>
