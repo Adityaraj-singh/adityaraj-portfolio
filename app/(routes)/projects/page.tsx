@@ -1,0 +1,116 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ProjectCard } from "@/components/projects/project-card";
+import { Badge } from "@/components/ui/badge";
+import { projects } from "@/data/projects";
+import { StarHeader } from "@/components/shared/star-header";
+
+// Sort technologies by usage frequency (most used first), then alphabetically for ties
+const technologyCounts = new Map<string, number>();
+for (const project of projects) {
+  for (const tech of project.technologies) {
+    technologyCounts.set(tech, (technologyCounts.get(tech) ?? 0) + 1);
+  }
+}
+const allTechnologies = Array.from(technologyCounts.keys()).sort((a, b) => {
+  const diff = (technologyCounts.get(b) ?? 0) - (technologyCounts.get(a) ?? 0);
+  return diff !== 0 ? diff : a.localeCompare(b);
+});
+
+const VISIBLE_FILTER_COUNT = 10;
+
+export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [showAllFilters, setShowAllFilters] = useState(false);
+
+  const visibleTechnologies = showAllFilters
+    ? allTechnologies
+    : allTechnologies.slice(0, VISIBLE_FILTER_COUNT);
+
+  const filteredProjects = activeFilter
+    ? projects.filter((project) => project.technologies.includes(activeFilter))
+    : projects;
+
+  return (
+    <>
+      <StarHeader>
+        <div className="container mx-auto px-4 py-12 md:px-6 md:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center space-y-4 text-center"
+          >
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              My Projects
+            </h1>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              A showcase of my work across various technologies
+            </p>
+          </motion.div>
+        </div>
+      </StarHeader>
+
+      <div className="container mx-auto px-4 pb-12 md:px-6 md:pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="mb-6 flex flex-wrap justify-center gap-2">
+            <Badge
+              variant={activeFilter === null ? "default" : "outline"}
+              className="cursor-pointer px-3 py-2 text-sm"
+              onClick={() => setActiveFilter(null)}
+            >
+              All
+            </Badge>
+            {visibleTechnologies.map((tech) => (
+              <Badge
+                key={tech}
+                variant={activeFilter === tech ? "default" : "outline"}
+                className="cursor-pointer px-3 py-2 text-sm"
+                onClick={() => setActiveFilter(tech)}
+              >
+                {tech}
+              </Badge>
+            ))}
+            {allTechnologies.length > VISIBLE_FILTER_COUNT && (
+              <Badge
+                className="cursor-pointer bg-primary/15 px-3 py-2 text-sm text-primary hover:bg-primary/25"
+                onClick={() => setShowAllFilters((prev) => !prev)}
+              >
+                {showAllFilters
+                  ? "Show less"
+                  : `+${allTechnologies.length - VISIBLE_FILTER_COUNT} more`}
+              </Badge>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </div>
+
+        {filteredProjects.length === 0 && (
+          <div className="py-12 text-center">
+            <p className="text-muted-foreground">
+              No projects found with the selected technology. Please try another filter.
+            </p>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
