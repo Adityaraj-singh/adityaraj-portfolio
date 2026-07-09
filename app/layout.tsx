@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Aditya Raj Singh | Software Engineer",
   description:
     "Full Stack Software Engineer with 5+ years of experience building scalable applications using React.js, Next.js, Angular, Node.js, and TypeScript. Passionate about delivering high-performance solutions for supply chain and demand planning products, driving business impact through scalable architecture, performance optimization, and intuitive user experiences",
-  metadataBase: new URL("https://achyutkatiyar.com"),
+  metadataBase: new URL("https://adityarkatiyar.com"),
 
   // Basic metadata
   applicationName: "Aditya Raj Singh Protfolio",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://achyutkatiyar.com",
+    url: "https://adityarkatiyar.com",
     title: "Aditya Raj Singh | Software Engineer",
     description:
       "Software Engineer building full-stack applications and decentralized systems. MS CS at Northeastern. Co-Chair of MIT Bitcoin Expo.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://achyutkatiyar.com",
+    canonical: "https://adityaraj-singh-portfolio.netlify.app",
   },
 };
 

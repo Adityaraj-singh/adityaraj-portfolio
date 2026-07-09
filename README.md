@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with Next.js 14, Tailwind CSS, and 
 
 ![Portfolio Preview](https://via.placeholder.com/800x400?text=Portfolio+Preview)
 
-Live Website: [https://achyutkatiyar.com](https://www.achyutkatiyar.com/)
+Live Website: [https://adityaraj-singh-portfolio.netlify.app](https://adityaraj-singh-portfolio.netlify.app/)
 
 ## Table of Contents
 
@@ -155,7 +155,7 @@ If you'd like to use this template for your own portfolio website, you are welco
 ### Attribution Requirements
 
 1. **Required Attribution**:
-   - You must maintain the original credit in the footer: "Original design by [Aditya Raj Singh](https://github.com/achyut21)"
+   - You must maintain the original credit in the footer: "Original design by [Aditya Raj Singh](https://github.com/adityar21)"
    - Keep the attribution link in the README
 
 2. **GitHub Repository**:
@@ -178,7 +178,7 @@ If you'd like to use this template for your own portfolio website, you are welco
 For your README:
 
 ```markdown
-This portfolio is based on [Aditya Raj Singh's Portfolio Template](https://github.com/achyut21/portfolio-website),
+This portfolio is based on [Aditya Raj Singh's Portfolio Template](https://github.com/adityar21/portfolio-website),
 customized with my personal information and projects.
 ```
 
@@ -186,7 +186,7 @@ For your website footer:
 
 ```html
 Design inspired by
-<a href="https://github.com/achyut21" target="_blank" rel="noopener noreferrer">Aditya Raj Singh</a>
+<a href="https://github.com/adityar21" target="_blank" rel="noopener noreferrer">Aditya Raj Singh</a>
 ```
 
 ## Deployment
@@ -208,7 +208,7 @@ For other platforms, refer to the [Next.js deployment documentation](https://nex
 
 ## Credits
 
-- Design & Development: [Aditya Raj Singh](https://github.com/achyut21)
+- Design & Development: [Aditya Raj Singh](https://github.com/adityar21)
 - UI Components: [shadcn/ui](https://ui.shadcn.com/)
 - Icons: [Lucide React](https://lucide.dev/)
 - Animation: [Framer Motion](https://www.framer.com/motion/)

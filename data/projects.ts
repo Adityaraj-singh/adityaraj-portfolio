@@ -37,7 +37,6 @@ export const projects: Project[] = [
       "Coordinated speakers, hackathon logistics, and sponsor pages as Co-Chair of Hackathon and Marketing",
     ],
     image: "/images/projects/mit-bitcoin-expo/mit-bitcoin-expo.webp",
-    github: "https://github.com/Achyut21/MIT_BITCOIN_EXPO_2026",
     liveUrl: "https://mitbitcoinexpo.org",
     featured: true,
   },
@@ -68,7 +67,6 @@ export const projects: Project[] = [
       "Implemented real-time job market analytics and salary benchmarking via Uclone MCP integration",
     ],
     image: "/images/projects/skillbridge-ai/skillbridge-ai.webp",
-    github: "https://github.com/Achyut21/SkillBridge-ai",
     featured: true,
   },
 ];

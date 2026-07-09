@@ -101,7 +101,7 @@ export function Hero() {
                 <Button variant="outline" size="lg" asChild>
                   <a
                     href="/resume.pdf"
-                    download="Achyut_Katiyar_Resume.pdf"
+                    download="aditya_raj_singh_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

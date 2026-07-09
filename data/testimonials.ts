@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     relation: "Mentor",
     date: "July 1, 2024",
     quote:
-      "Aditya has consistently demonstrated a strong work ethic, technical proficiency, and exceptional leadership skills throughout his tenure. As a student council member, Achyut played a pivotal role in organizing and executing various student events.",
+      "Aditya has consistently demonstrated a strong work ethic, technical proficiency, and exceptional leadership skills throughout his tenure. As a student council member, Aditya played a pivotal role in organizing and executing various student events.",
   },
   {
     id: "gopal",

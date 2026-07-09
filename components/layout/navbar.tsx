@@ -148,7 +148,7 @@ function MobileMenu({
                 <div className="mt-2 border-t border-border/30 pt-2">
                   <a
                     href="/resume.pdf"
-                    download="Achyut_Katiyar_Resume.pdf"
+                    download="Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
