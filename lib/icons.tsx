@@ -1,4 +1,4 @@
-import { CodeXml, Github, Linkedin, Mail, Phone, } from "lucide-react";
+import { CodeXml, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export function getIconComponent(iconName: string, className = "h-5 w-5") {
   switch (iconName) {
@@ -11,7 +11,7 @@ export function getIconComponent(iconName: string, className = "h-5 w-5") {
     case "phone":
       return <Phone className={className} />;
     case "leetcode":
-      return <CodeXml />
+      return <CodeXml />;
     default:
       return null;
   }

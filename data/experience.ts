@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
       "Implemented and maintained CI/CD pipelines using GitHub Actions and Jenkins, resulting in 5 regional production releases across 4 quarters.",
       "Partnered with backend engineers and product owners to build interactive dashboards for Britannia and Sunsteel, cutting load times by 40%.",
       "Collaborated with a US-based client to build an online clinic platform serving 1,000+ users, developing a multi-module MedNote generation system.",
-      "Utilized AI agents to detect edge cases and refactor business logic, alongside using AI prompting to build an in-house license management tool."
+      "Utilized AI agents to detect edge cases and refactor business logic, alongside using AI prompting to build an in-house license management tool.",
     ],
     type: "work",
   },
@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
     achievements: [
       "Developed three cognitive-ability games from scratch using React, Redux, and MUI to boost candidate engagement.",
       "Drove cross-functional integration of analytics tools (Google Analytics, Microsoft Clarity) to improve user-insight tracking by 30%.",
-      "Delivered responsive UI across candidate and admin portals, reducing device-specific UI bugs by 40% through rigorous unit testing."
+      "Delivered responsive UI across candidate and admin portals, reducing device-specific UI bugs by 40% through rigorous unit testing.",
     ],
     type: "work",
   },
@@ -60,8 +60,8 @@ export const experiences: Experience[] = [
     description: "Enhanced mobile workflows and cross-functional design elements.",
     achievements: [
       "Collaborated with a 10-member UI/UX team to maintain and enhance mobile applications using React Native.",
-      "Engineered core business logic in the mobile app to enable one-click access to hundreds of critical workflows."
+      "Engineered core business logic in the mobile app to enable one-click access to hundreds of critical workflows.",
     ],
     type: "work",
-  }
+  },
 ];

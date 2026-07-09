@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Github, ExternalLink, ArrowRight } from "lucide-react";
+import { ArrowLeft, ExternalLink, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -77,9 +77,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
                 className="mb-8"
               >
                 <h2 className="mb-4 text-2xl font-bold">Overview</h2>
-                <p className="leading-relaxed text-muted-foreground">
-                  {project.longDescription}
-                </p>
+                <p className="leading-relaxed text-muted-foreground">{project.longDescription}</p>
               </motion.div>
             )}
 
@@ -92,10 +90,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
               <h2 className="mb-4 text-2xl font-bold">Key Achievements</h2>
               <div className="space-y-3">
                 {project.achievements.map((achievement, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 rounded-lg border bg-card p-4"
-                  >
+                  <div key={i} className="flex items-start gap-3 rounded-lg border bg-card p-4">
                     <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <span className="text-sm leading-relaxed">{achievement}</span>
                   </div>
@@ -114,7 +109,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
               <Card className="sticky top-24">
                 <CardContent className="space-y-6 p-6">
                   <div>
-                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    <h3 className="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
                       Tech Stack
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -130,21 +125,13 @@ export function ProjectContent({ project }: ProjectContentProps) {
                     <>
                       <Separator />
                       <div>
-                        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                        <h3 className="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
                           Links
                         </h3>
                         <div className="flex flex-col gap-2">
                           {project.liveUrl && (
-                            <Button
-                              variant="outline"
-                              className="w-full justify-start"
-                              asChild
-                            >
-                              <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
+                            <Button variant="outline" className="w-full justify-start" asChild>
+                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                                 <ExternalLink className="mr-2 h-4 w-4" />
                                 Live Demo
                               </a>

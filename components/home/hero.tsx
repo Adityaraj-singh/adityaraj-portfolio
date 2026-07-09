@@ -10,12 +10,7 @@ import Link from "next/link";
 import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
 import { StarHeader } from "@/components/shared/star-header";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../tooltip/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/tooltip";
 
 const displayedSkills = [
   "Software Engineer",
@@ -26,7 +21,6 @@ const displayedSkills = [
 
 export function Hero() {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
-
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 800], [0, 40]);
@@ -83,10 +77,11 @@ export function Hero() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="max-w-[600px] text-muted-foreground md:text-xl"
                 >
-                  Full Stack Software Engineer with 5+ years of experience building scalable applications using React.js,
-                   Next.js, Angular, Node.js, and TypeScript. Passionate about delivering high-performance solutions for 
-                   supply chain and demand planning products, driving business impact through scalable architecture, performance 
-                   optimization, and intuitive user experiences
+                  Full Stack Software Engineer with 5+ years of experience building scalable
+                  applications using React.js, Next.js, Angular, Node.js, and TypeScript. Passionate
+                  about delivering high-performance solutions for supply chain and demand planning
+                  products, driving business impact through scalable architecture, performance
+                  optimization, and intuitive user experiences
                 </motion.p>
               </div>
 
@@ -117,13 +112,13 @@ export function Hero() {
               </motion.div>
 
               {/* Social Links - Added here from navbar */}
-              <TooltipProvider >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex gap-3 pt-2"
-              >
+              <TooltipProvider>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex gap-3 pt-2"
+                >
                   {socialLinks.map((social) => (
                     <motion.div
                       key={social.id}
@@ -149,13 +144,11 @@ export function Hero() {
                           </Button>
                         </TooltipTrigger>
 
-                        <TooltipContent>
-                          {social.name}
-                        </TooltipContent>
+                        <TooltipContent>{social.name}</TooltipContent>
                       </Tooltip>
                     </motion.div>
                   ))}
-              </motion.div>
+                </motion.div>
               </TooltipProvider>
             </motion.div>
 

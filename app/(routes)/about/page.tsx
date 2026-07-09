@@ -11,12 +11,22 @@ import { StarHeader } from "@/components/shared/star-header";
 
 const achievements = [
   { highlight: "Winner", label: "Internal Corporate Hackathon — Asset Management Web App" },
-  { highlight: "Award", label: "Star Performer of the Month for Rapid Production Fixes and smooth PROD releases" },
+  {
+    highlight: "Award",
+    label: "Star Performer of the Month for Rapid Production Fixes and smooth PROD releases",
+  },
   { highlight: "30,000+", label: "Users Played Cognitive-Ability Games Developed at PerspectAI" },
   { highlight: "Smooth", label: "Recognition for Successful Regional Production Deployments" },
-  { highlight: "Zero Lag", label: "Optimized Portal Performance to Prevent Hanging During User Spikes" },
+  {
+    highlight: "Zero Lag",
+    label: "Optimized Portal Performance to Prevent Hanging During User Spikes",
+  },
   { highlight: "40%", label: "Reduction in Dashboard Data Load Times" },
-  { highlight: "1,000+", label: "Active Users Served on Cross-Border Online Clinic Platform throughout Europe and canada" },
+  {
+    highlight: "1,000+",
+    label:
+      "Active Users Served on Cross-Border Online Clinic Platform throughout Europe and canada",
+  },
 ];
 
 export default function AboutPage() {
@@ -55,21 +65,21 @@ export default function AboutPage() {
                 <CardContent className="space-y-4 p-6 leading-relaxed">
                   <p>
                     I&apos;m Aditya Raj Singh, a Software Engineer with over 5 years of professional
-                    experience building scalable web and mobile applications. I specialize in frontend
-                    and full-stack development, leading UI/UX initiatives for business-critical
-                    enterprise systems and interactive data dashboards.
+                    experience building scalable web and mobile applications. I specialize in
+                    frontend and full-stack development, leading UI/UX initiatives for
+                    business-critical enterprise systems and interactive data dashboards.
                   </p>
                   <p>
-                    Currently, I work as a Software Engineer at Divami Design Labs, where I serve
-                    as a Lead UI Engineer for major platforms like BlueYonder&apos;s Sales Portal.
-                    My day-to-day involves delivering high-impact features alongside US-based teams,
+                    Currently, I work as a Software Engineer at Divami Design Labs, where I serve as
+                    a Lead UI Engineer for major platforms like BlueYonder&apos;s Sales Portal. My
+                    day-to-day involves delivering high-impact features alongside US-based teams,
                     optimizing application performance, and managing robust CI/CD pipelines.
                   </p>
                   <p>
-                    My technical expertise spans across React.js, Next.js, Angular, Node.js, and TypeScript,
-                    complemented by state management using Redux and Redux Toolkit. I also have
-                    hands-on experience integrating AI agents to refactor business logic and leveraging AI
-                    prompting to build internal tools.
+                    My technical expertise spans across React.js, Next.js, Angular, Node.js, and
+                    TypeScript, complemented by state management using Redux and Redux Toolkit. I
+                    also have hands-on experience integrating AI agents to refactor business logic
+                    and leveraging AI prompting to build internal tools.
                   </p>
                 </CardContent>
               </Card>
@@ -118,7 +128,7 @@ export default function AboutPage() {
                 {Object.keys(skills).map((category) => (
                   <Card key={category}>
                     <CardContent className="p-5">
-                      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
+                      <h3 className="mb-3 text-sm font-semibold tracking-wider text-primary uppercase">
                         {category}
                       </h3>
                       <div className="flex flex-wrap gap-2">

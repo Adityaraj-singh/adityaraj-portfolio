@@ -1,9 +1,5 @@
 // data/skills.ts
-export type SkillCategory =
-  | "Languages"
-  | "Frameworks/Libraries"
-  | "Cloud/DevOps"
-  | "Concepts";
+export type SkillCategory = "Languages" | "Frameworks/Libraries" | "Cloud/DevOps" | "Concepts";
 
 export interface Skill {
   name: string;
@@ -16,7 +12,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
     { name: "JavaScript", category: "Languages", logoKey: "javascript" },
     { name: "TypeScript", category: "Languages", logoKey: "typescript" },
     { name: "Python", category: "Languages", logoKey: "python" },
-    { name: "Java", category: "Languages", logoKey: "java" }
+    { name: "Java", category: "Languages", logoKey: "java" },
   ],
   "Frameworks/Libraries": [
     { name: "React.js", category: "Frameworks/Libraries", logoKey: "react" },
