@@ -96,7 +96,7 @@ export const projects: Project[] = [
       "Designed a modular component system supporting configurable widgets, real-time preview, and state-driven rendering",
     ],
 
-    image: "/images/projects/canvas-pro/renames.webp",
+    image: "/images/projects/canvas-pro/notion.webp",
     liveUrl: "https://shimmering-pro-canvas.netlify.app",
     featured: true,
   },
