@@ -186,7 +186,9 @@ For your website footer:
 
 ```html
 Design inspired by
-<a href="https://github.com/adityar21" target="_blank" rel="noopener noreferrer">Aditya Raj Singh</a>
+<a href="https://github.com/adityar21" target="_blank" rel="noopener noreferrer"
+  >Aditya Raj Singh</a
+>
 ```
 
 ## Deployment

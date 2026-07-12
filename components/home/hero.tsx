@@ -15,8 +15,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../too
 const displayedSkills = [
   "Software Engineer",
   "Full Stack Developer",
-  "Blockchain Builder",
-  "Systems Thinker",
+  "Backend Developer",
+  "Playwright Automation"
 ];
 
 export function Hero() {
@@ -46,7 +46,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-2xl xl:text-5xl/none">
                     Hi, I&apos;m Aditya Raj Singh
                   </h1>
                 </motion.div>
@@ -77,11 +77,10 @@ export function Hero() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="max-w-[600px] text-muted-foreground md:text-xl"
                 >
-                  Full Stack Software Engineer with 5+ years of experience building scalable
-                  applications using React.js, Next.js, Angular, Node.js, and TypeScript. Passionate
-                  about delivering high-performance solutions for supply chain and demand planning
-                  products, driving business impact through scalable architecture, performance
-                  optimization, and intuitive user experiences
+                  A Full Stack Software Developer with 5+ years of experience building scalable web
+                  applications using ReactJs , Angular, NodeJs, NextJS, AWS. Leveraging DSA,
+                  problem-solving, and modern technologies to engineer high-performance solutions
+                  that streamline business operations and improve user experience.
                 </motion.p>
               </div>
 

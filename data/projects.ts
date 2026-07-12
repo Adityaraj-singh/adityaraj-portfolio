@@ -69,4 +69,35 @@ export const projects: Project[] = [
     image: "/images/projects/skillbridge-ai/skillbridge-ai.webp",
     featured: true,
   },
+  {
+    id: "dashboard-builder",
+    title: "Dashboard Builder",
+    description:
+      "A no-code visual dashboard builder that enables users to create dynamic, responsive dashboards through drag-and-drop components.",
+
+    longDescription:
+      "Built an architecture-driven visual UI platform that allows users to design dashboards without writing code. The application features drag-and-drop widgets, configurable layouts, dynamic component rendering, responsive GridStack-based layouts, and exportable dashboard configurations. Developed using Angular with a metadata-driven architecture, demonstrating scalable frontend engineering, reusable component design, and state-driven rendering.",
+
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "GridStack.js",
+      "Angular CDK",
+      "RxJS",
+      "SCSS",
+      "HTML5",
+      "JSON",
+    ],
+
+    achievements: [
+      "Built a no-code dashboard builder with drag-and-drop widget composition and responsive layouts",
+      "Implemented metadata-driven dynamic component rendering for reusable and scalable UI architecture",
+      "Enabled exportable dashboard configurations, following architecture-as-code principles for rapid UI generation",
+      "Designed a modular component system supporting configurable widgets, real-time preview, and state-driven rendering",
+    ],
+
+    image: "/images/projects/canvas-pro/renames.webp",
+    liveUrl: "https://shimmering-pro-canvas.netlify.app",
+    featured: true,
+  },
 ];

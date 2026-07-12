@@ -56,18 +56,15 @@ export function ExperienceTimeline() {
       <div className="container mx-auto px-4 pb-12 md:px-6 md:pb-24">
         <div className="mt-8 flex justify-center">
           <Tabs defaultValue="all" className="w-full max-w-md">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="all" onClick={() => setActiveTab("all")}>
+            <TabsList className="grid w-full grid-cols-2">
+              {/* <TabsTrigger value="all" onClick={() => setActiveTab("all")}>
                 All
-              </TabsTrigger>
+              </TabsTrigger> */}
               <TabsTrigger value="work" onClick={() => setActiveTab("work")}>
                 Work
               </TabsTrigger>
               <TabsTrigger value="leadership" onClick={() => setActiveTab("leadership")}>
-                Leadershipss
-              </TabsTrigger>
-              <TabsTrigger value="research" onClick={() => setActiveTab("research")}>
-                Research
+                Leaderships
               </TabsTrigger>
             </TabsList>
           </Tabs>

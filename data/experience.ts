@@ -33,6 +33,27 @@ export const experiences: Experience[] = [
     type: "work",
   },
   {
+    id: "blueyonder-leadership",
+    title: "Technical Leadership @ Blue Yonder",
+    type: "leadership",
+    company: "Divami Design Labs",
+    location: "Hyderabad, India",
+    startDate: "April 2023",
+    endDate: "Present",
+    description:
+      "Led frontend architecture and delivery for Blue Yonder, one of Divami Design Labs' largest enterprise clients, building scalable supply chain and demand planning solutions.",
+
+    achievements: [
+      "Led frontend engineering for Blue Yonder, one of Divami Design Labs' largest enterprise clients, delivering multiple business-critical modules for global supply chain products.",
+      "Owned frontend architecture, feature planning, and technical execution while collaborating directly with US-based product managers, architects, and distributed engineering teams.",
+      "Mentored engineers through design discussions, code reviews, debugging sessions, and engineering best practices, improving delivery quality and development velocity.",
+      "Architected high-performance dashboards and data-intensive interfaces for enterprise customers including BATA, Britannia, and Sunsteel, reducing page load times by 40%.",
+      "Established reusable UI patterns and scalable component architecture adopted across multiple product modules, accelerating feature development.",
+      "Led production deployments and CI/CD improvements using Jenkins and GitHub Actions, ensuring reliable enterprise releases with minimal downtime.",
+    ],
+
+  },
+  {
     id: "perspectai",
     title: "Software Development Engineer 1",
     company: "PerspectAI",
