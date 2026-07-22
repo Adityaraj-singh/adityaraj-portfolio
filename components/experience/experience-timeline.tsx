@@ -9,11 +9,11 @@ import { experiences } from "@/data/experience";
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { StarHeader } from "@/components/shared/star-header";
+import "./experience.css";
 
 export function ExperienceTimeline() {
   const [activeTab, setActiveTab] = useState<string>("all");
 
-  // Filter experiences based on active tab
   const filteredExperiences =
     activeTab === "all" ? experiences : experiences.filter((exp) => exp.type === activeTab);
 
@@ -57,10 +57,7 @@ export function ExperienceTimeline() {
         <div className="mt-8 flex justify-center">
           <Tabs defaultValue="all" className="w-full max-w-md">
             <TabsList className="grid w-full grid-cols-2">
-              {/* <TabsTrigger value="all" onClick={() => setActiveTab("all")}>
-                All
-              </TabsTrigger> */}
-              <TabsTrigger value="work" onClick={() => setActiveTab("work")}>
+              <TabsTrigger value="all" onClick={() => setActiveTab("all")}>
                 Work
               </TabsTrigger>
               <TabsTrigger value="leadership" onClick={() => setActiveTab("leadership")}>
@@ -111,25 +108,58 @@ export function ExperienceTimeline() {
                 </div>
 
                 {/* Content Card */}
-                <div className={`mx-5 md:w-1/2 ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
+                <div className={`mx-5 md:w-[62%] ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
                   <Card className="overflow-hidden border border-border transition-colors hover:border-primary/50">
-                    <CardHeader className="bg-muted/50 p-4">
+                    <CardHeader
+                      style={{
+                        backgroundImage: `
+      linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)),
+      url(${experience.clientLogo ?? experience.companyLogo})
+    `,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "470px",
+                        backgroundPosition: "center",
+                      }}
+                      className="bg-muted/10 p-4"
+                    >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <CardTitle>
-                            <h3 className="text-xl font-bold">{experience.title}</h3>
-                            <p className="mt-1 text-sm text-muted-foreground">
-                              {experience.company}
-                            </p>
+                            <h3 className="text-xl font-bold text-black">{experience.title}</h3>
+
+                            <div className="mt-2">
+                              <p className="text-sm text-black">Company: {experience.company}</p>
+
+                              {experience.client && (
+                                <p className="text-sm text-black">
+                                  Customer: <span className="font-medium">{experience.client}</span>
+                                </p>
+                              )}
+                            </div>
+                            <div className="mt-2 flex items-center text-sm text-black">
+                              <MapPin className="mr-1 h-4 w-4" />
+                              {experience.location}
+                            </div>
                           </CardTitle>
                         </div>
-                        <Badge variant="outline" className="shrink-0">
-                          {experience.startDate} - {experience.endDate}
-                        </Badge>
-                      </div>
-                      <div className="mt-2 flex items-center text-sm text-muted-foreground">
-                        <MapPin className="mr-1 h-4 w-4" />
-                        {experience.location}
+
+                        <div className="ml-4 flex flex-col items-end gap-3 text-black">
+                          <Badge variant="secondary">
+                            {experience.startDate} - {experience.endDate}
+                          </Badge>
+
+                          {/* {(experience.clientLogo || experience.companyLogo) && (
+                            <div className="company-logo-container flex h-20 w-40 items-center justify-end">
+                              <Image
+                                src={experience.clientLogo ?? experience.companyLogo}
+                                alt={experience.client ?? experience.company}
+                                width={600}
+                                height={200}
+                                className="max-h-full max-w-full object-contain"
+                              />
+                            </div>
+                          )} */}
+                        </div>
                       </div>
                     </CardHeader>
                     <CardContent className="p-4">

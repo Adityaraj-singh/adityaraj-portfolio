@@ -16,7 +16,7 @@ const displayedSkills = [
   "Software Engineer",
   "Full Stack Developer",
   "Backend Developer",
-  "Playwright Automation"
+  "Playwright Automation",
 ];
 
 export function Hero() {

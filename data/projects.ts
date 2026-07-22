@@ -68,6 +68,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/skillbridge-ai/skillbridge-ai.webp",
     featured: true,
+    liveUrl: "https://skillbridge-ai.vercel.app",
   },
   {
     id: "dashboard-builder",
