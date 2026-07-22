@@ -173,6 +173,11 @@ export function Hero() {
                     opacity: 1,
                     y: [-10, -38, -10], // float up then back down
                   }}
+                   whileHover={{
+    y: -9,
+    rotate: -5,
+    scale: 1.33,
+  }}
                   transition={{
                     opacity: { duration: 0.5, delay: 0.8 },
                     y: {
@@ -182,9 +187,9 @@ export function Hero() {
                       ease: "easeInOut",
                     },
                   }}
-                  className="absolute -top-6 left-6 z-20"
+                  className="absolute top-[30%] left-[43%] z-20"
                 >
-                  <div className="absolute top-40 left-45 flex flex-col items-center rounded-2xl px-4 py-3">
+                  <div className="flex flex-col items-center rounded-2xl px-4 py-3">
                     {/* Location */}
                     <div className="flex flex-row items-center gap-2 rounded-2xl border bg-black px-2 shadow-xl backdrop-blur-xl">
                       <div className="relative flex h-3 w-3 items-center justify-center">
@@ -195,7 +200,12 @@ export function Hero() {
                     </div>
 
                     <div className="mt-1 flex items-center gap-1 text-muted-foreground">
-                      <MapPin className="h-6 w-6 text-black" />
+                      <Image
+                        src="./images/locationpin.svg"
+                        alt="Location"
+                        width={35}
+                        height={35}
+                      />
                     </div>
                   </div>
                 </motion.div>
