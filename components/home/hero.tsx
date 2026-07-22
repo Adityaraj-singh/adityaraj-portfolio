@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +10,7 @@ import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
 import { StarHeader } from "@/components/shared/star-header";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/tooltip";
+import { MapPin, ArrowRight, Download } from "lucide-react";
 
 const displayedSkills = [
   "Software Engineer",
@@ -50,7 +50,6 @@ export function Hero() {
                     Hi, I&apos;m Aditya Raj Singh
                   </h1>
                 </motion.div>
-              
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -72,7 +71,7 @@ export function Hero() {
                     ))}
                   </div>
                 </motion.div>
-                 @ Divami Design Labs, Hyderabad
+                @ Divami Design Labs
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -160,15 +159,58 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-full">
-                <Image
-                  src="/images/profile.webp"
-                  alt="Aditya Raj Singh"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 500px"
-                />
+              <div className="relative aspect-square w-full max-w-md">
+                {/* Outer Glow */}
+                <div className="absolute inset-0 scale-110 rounded-full bg-violet-500/15 blur-[60px]" />
+
+                {/* Glass Ring */}
+                <div className="absolute inset-0 rounded-full border border-white/15 bg-white/5 shadow-[0_0_40px_rgba(139,92,246,0.15)] backdrop-blur-md" />
+
+                {/* Location Pin */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{
+                    opacity: 1,
+                    y: [-10, -38, -10], // float up then back down
+                  }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 0.8 },
+                    y: {
+                      duration: 1.9,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut",
+                    },
+                  }}
+                  className="absolute -top-6 left-6 z-20"
+                >
+                  <div className="absolute top-40 left-45 flex flex-col items-center rounded-2xl px-4 py-3">
+                    {/* Location */}
+                    <div className="flex flex-row items-center gap-2 rounded-2xl border bg-black px-2 shadow-xl backdrop-blur-xl">
+                      <div className="relative flex h-3 w-3 items-center justify-center">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+                        <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-white">Hyderabad</span>
+                    </div>
+
+                    <div className="mt-1 flex items-center gap-1 text-muted-foreground">
+                      <MapPin className="h-6 w-6 text-black" />
+                    </div>
+                  </div>
+                </motion.div>
+                <div className="relative h-full w-full overflow-hidden rounded-full p-[6px]">
+                  <div className="relative h-full w-full overflow-hidden rounded-full">
+                    <Image
+                      src="/images/profile.webp"
+                      alt="Aditya Raj Singh"
+                      fill
+                      className="object-cover"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 500px"
+                    />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -129,8 +129,8 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <span>Built with</span>
-              <Heart className="h-3.5 w-3.5 fill-primary text-primary" />
-              <span>using Next.js & Tailwind</span>
+              <Heart className="h-6.5 w-6.5 fill-secondary text-primary shadow-xl backdrop-blur-xl" />
+              <span>By AD</span>
             </div>
           </div>
         </motion.div>
