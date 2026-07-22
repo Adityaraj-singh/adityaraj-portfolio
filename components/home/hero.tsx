@@ -50,6 +50,7 @@ export function Hero() {
                     Hi, I&apos;m Aditya Raj Singh
                   </h1>
                 </motion.div>
+              
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -71,6 +72,7 @@ export function Hero() {
                     ))}
                   </div>
                 </motion.div>
+                 @ Divami Design Labs, Hyderabad
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

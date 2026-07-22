@@ -113,11 +113,18 @@ export function ExperienceTimeline() {
                     <CardHeader
                       style={{
                         backgroundImage: `
-      linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)),
-      url(${experience.clientLogo ?? experience.companyLogo})
-    `,
+    linear-gradient(
+      to right,
+      rgba(255,255,255,0.9) 0%,
+      rgba(255,255,255,0.6) 20%,
+      rgba(255,255,255,0.2) 40%,
+      rgba(255,255,255,0) 60%
+    ),
+    url(${experience.clientLogo ?? experience.companyLogo})
+  `,
                         backgroundRepeat: "no-repeat",
-                        backgroundSize: "470px",
+                        backgroundSize: "cover",
+                        objectFit: "cover",
                         backgroundPosition: "center",
                       }}
                       className="bg-muted/10 p-4"
@@ -125,10 +132,10 @@ export function ExperienceTimeline() {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <CardTitle>
-                            <h3 className="text-xl font-bold text-black">{experience.title}</h3>
+                            <h3 className="text-md font-bold text-black">{experience.title}</h3>
 
                             <div className="mt-2">
-                              <p className="text-sm text-black">Company: {experience.company}</p>
+                              <p className="text-sm text-black">Org: {experience.company}</p>
 
                               {experience.client && (
                                 <p className="text-sm text-black">

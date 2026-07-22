@@ -18,7 +18,7 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "blueyonder-leadership",
-    title: "Technical Leadership",
+    title: "UI Lead",
     type: "leadership",
 
     company: "Divami Design Labs",
@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
     client: "BlueYonder",
     clientLogo: "/images/experience/blueyondernew.webp",
 
-    location: "Hyderabad, India",
+    location: "BY Office , Hyderabad/Banglore",
     startDate: "October 2024",
     endDate: "Present",
 
@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
     startDate: "April 2023",
     endDate: "Present",
     description:
-      "Lead UI/UX development for major corporate portals and platforms, driving regional production releases and integrating AI business logic optimizations.",
+      "Developed major corporate portals and platforms, driving regional production releases and integrating AI business logic optimizations.",
     achievements: [
       "Lead UI/UX development for Blue Yonder's Sales Portal, collaborating with US-based Luminate Assortment teams to deliver business-critical features quarterly.",
       "Built and maintained scalable applications using React.js, Next.js, and Angular with Redux state management, integrating backend services via Node.js and AWS.",
@@ -67,7 +67,7 @@ export const experiences: Experience[] = [
     id: "perspectai",
     title: "Software Development Engineer 1",
     company: "PerspectAI",
-    companyLogo: "/images/experience/perspectai.webp",
+    companyLogo: "/images/experience/paitwo.webp",
     location: "Hyderabad, India",
     startDate: "August 2021",
     endDate: "March 2023",
