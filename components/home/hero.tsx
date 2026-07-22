@@ -10,7 +10,7 @@ import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
 import { StarHeader } from "@/components/shared/star-header";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/tooltip";
-import { MapPin, ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 const displayedSkills = [
   "Software Engineer",
@@ -173,11 +173,11 @@ export function Hero() {
                     opacity: 1,
                     y: [-10, -38, -10], // float up then back down
                   }}
-                   whileHover={{
-    y: -9,
-    rotate: -5,
-    scale: 1.33,
-  }}
+                  whileHover={{
+                    y: -9,
+                    rotate: -5,
+                    scale: 1.33,
+                  }}
                   transition={{
                     opacity: { duration: 0.5, delay: 0.8 },
                     y: {
@@ -200,12 +200,7 @@ export function Hero() {
                     </div>
 
                     <div className="mt-1 flex items-center gap-1 text-muted-foreground">
-                      <Image
-                        src="./images/locationpin.svg"
-                        alt="Location"
-                        width={35}
-                        height={35}
-                      />
+                      <Image src="./images/locationpin.svg" alt="Location" width={35} height={35} />
                     </div>
                   </div>
                 </motion.div>
