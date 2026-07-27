@@ -3,10 +3,9 @@
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/layout/navbar";
+import { Navbar } from "@/components/layout/Navbar/Desktop/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ScrollToTop } from "@/components/shared/scroll-to-top";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { SmoothScrollProvider } from "@/components/shared/smooth-scroll-provider";
 import { Analytics } from "@vercel/analytics/react";
@@ -62,7 +61,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
               <Footer />
             </div>
             <FloatingSocials />
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
             <ScrollProgress />
             <SpeedInsights />
             <Analytics />

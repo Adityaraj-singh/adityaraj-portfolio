@@ -4,13 +4,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { Menu, X } from "lucide-react";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { cn } from "@/lib/utils";
 import { navItems } from "@/data/navigation";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { ThreeDCard } from "@/components/3d-card";
-
+import { FloatingMenuActionButton } from "@/components/layout/Navbar/Mobile/FloatingMenuActionButton";
+import { RadialMenu } from "../Mobile/RadialMenu";
 // ─── Animation variants (hoisted — never recreated) ─────────────────────────
 
 const navbarVariants: Variants = {
@@ -42,21 +42,6 @@ const itemVariants: Variants = {
   }),
 };
 
-const mobileMenuVariants: Variants = {
-  closed: {
-    opacity: 0,
-    scale: 0.96,
-    y: -8,
-    transition: { duration: 0.15, ease: "easeIn" },
-  },
-  open: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.15, ease: "easeOut" },
-  },
-};
-
 const isScrolledBgClass =
   "bg-background/40 dark:bg-background/30 backdrop-blur-md border-[0.5px] border-white/20 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(255,255,255,0.03)]";
 
@@ -65,123 +50,22 @@ const notScrolledBgClass =
 
 // ─── Mobile dropdown menu ────────────────────────────────────────────────────
 
-function MobileMenu({
-  isOpen,
-  onClose,
-  toggleButtonRef,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  toggleButtonRef: React.RefObject<HTMLButtonElement | null>;
-}) {
-  const pathname = usePathname();
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const target = event.target as Node;
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(target) &&
-        toggleButtonRef.current &&
-        !toggleButtonRef.current.contains(target)
-      ) {
-        onClose();
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "";
-    };
-  }, [isOpen, onClose, toggleButtonRef]);
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
-          />
-
-          {/* Floating dropdown card */}
-          <motion.div
-            ref={menuRef}
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className="fixed top-[5rem] right-4 left-4 z-50 md:hidden"
-          >
-            <div className="overflow-hidden rounded-2xl border-[0.5px] border-white/20 bg-background/95 shadow-2xl shadow-black/50 backdrop-blur-xl dark:border-white/10">
-              <nav aria-label="Mobile navigation" className="p-3">
-                {navItems.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={onClose}
-                      className={cn(
-                        "block rounded-xl px-4 py-3 text-[15px] font-medium transition-colors",
-                        isActive
-                          ? "bg-muted/80 text-primary"
-                          : "text-muted-foreground hover:bg-muted/40 hover:text-primary"
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  );
-                })}
-
-                {/* Resume download button */}
-                <div className="mt-2 border-t border-border/30 pt-2">
-                  <a
-                    href="/resume.pdf"
-                    download="Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={onClose}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                  >
-                    Resume
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-}
-
 // ─── Main navbar ─────────────────────────────────────────────────────────────
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRadialMenuOpen, setIsRadialMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const lastScrollYRef = useRef(0);
   const rafRef = useRef<number>(0);
-  const mobileMenuToggleRef = useRef<HTMLButtonElement>(null);
+  // const mobileMenuToggleRef = useRef<HTMLButtonElement>(null);
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setIsRadialMenuOpen(false);
   }, [pathname]);
 
   const handleScroll = useCallback(() => {
@@ -266,7 +150,7 @@ export function Navbar() {
                   <nav aria-label="Main navigation" className="flex items-center gap-1">
                     {navItems.map((item, i) => (
                       <motion.div
-                        key={item.href}
+                        key={item.id}
                         custom={i}
                         variants={itemVariants}
                         initial="hidden"
@@ -299,31 +183,20 @@ export function Navbar() {
                   >
                     <ThemeSwitch />
                   </motion.div>
-
-                  {/* Mobile menu toggle */}
-                  <motion.button
-                    ref={mobileMenuToggleRef}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring" }}
-                    onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                    className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted/50 hover:text-primary md:hidden"
-                    aria-label="Toggle menu"
-                  >
-                    {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                  </motion.button>
                 </div>
               </div>
             </ThreeDCard>
           </motion.header>
         )}
-      </AnimatePresence>
+        <div className="md:hidden">
+          <FloatingMenuActionButton
+            isOpen={isRadialMenuOpen}
+            onClick={() => setIsRadialMenuOpen((prev) => !prev)}
+          />
 
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        toggleButtonRef={mobileMenuToggleRef}
-      />
+          <RadialMenu isOpen={isRadialMenuOpen} onClose={() => setIsRadialMenuOpen(false)} />
+        </div>
+      </AnimatePresence>
     </>
   );
 }
