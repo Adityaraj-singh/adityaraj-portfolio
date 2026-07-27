@@ -21,7 +21,7 @@ interface Props {
   onClose: () => void;
 }
 
-const radius = 235;
+const radius = 205;
 
 const iconMap: Record<string, LucideIcon> = {
   Home,
@@ -76,13 +76,15 @@ export function RadialMenu({ isOpen, onClose }: Props) {
             className="fixed bottom-[calc(env(safe-area-inset-bottom)+76px)] z-[95] md:hidden"
             style={{
               right: "26%",
-              bottom: "6%",
+              bottom: "8%",
             }}
           >
             {menuItems.map((item, index) => {
-              const arcAngle = Math.PI * 0.63; // 135°
+             const arcAngle = Math.PI * 0.69;
 
-              const angle = Math.PI - (arcAngle / (menuItems.length - 1)) * index;
+const step = (arcAngle / (menuItems.length - 1)) * 0.80; // 82% of original spacing
+
+const angle = Math.PI - step * index;
               const x = Math.cos(angle) * radius;
               const y = Math.sin(angle) * radius * -1;
 

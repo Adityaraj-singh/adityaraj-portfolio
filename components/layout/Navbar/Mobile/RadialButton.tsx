@@ -68,7 +68,7 @@ export function RadialButton({
           animate={
             isOpen
               ? {
-                  y: [0, -3, 0],
+                  y: [0, -7, 0],
                 }
               : {}
           }
@@ -77,7 +77,7 @@ export function RadialButton({
               ? {
                   y: {
                     repeat: Infinity,
-                    duration: 2.2,
+                    duration: 2.0,
                     ease: "easeInOut",
                     delay: index * 0.12,
                   },
