@@ -53,9 +53,7 @@ export function RadialMenu({ isOpen, onClose }: Props) {
     };
   }, [isOpen, onClose]);
 
-  const menuItems = navItems.filter(
-  (item) => item.title !== "Contact"
-);
+  const menuItems = navItems.filter((item) => item.title !== "Contact");
   return (
     <AnimatePresence>
       {isOpen && (
@@ -76,15 +74,15 @@ export function RadialMenu({ isOpen, onClose }: Props) {
             className="fixed bottom-[calc(env(safe-area-inset-bottom)+76px)] z-[95] md:hidden"
             style={{
               right: "26%",
-              bottom: "8%",
+              bottom: "12%",
             }}
           >
             {menuItems.map((item, index) => {
-             const arcAngle = Math.PI * 0.69;
+              const arcAngle = Math.PI * 0.69;
 
-const step = (arcAngle / (menuItems.length - 1)) * 0.80; // 82% of original spacing
+              const step = (arcAngle / (menuItems.length - 1)) * 0.8; // 82% of original spacing
 
-const angle = Math.PI - step * index;
+              const angle = Math.PI - step * index;
               const x = Math.cos(angle) * radius;
               const y = Math.sin(angle) * radius * -1;
 

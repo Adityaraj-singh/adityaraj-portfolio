@@ -50,10 +50,10 @@ export function RadialButton({
 
       transition={{
         type: "spring",
-        stiffness: 320,
-        damping: 20,
-        mass: 0.8,
-        delay: index * 0.05,
+        stiffness: 220,
+        damping: 15,
+        mass: 0.9,
+        delay: index * 0.11,
       }}
       style={{
         pointerEvents: isOpen ? "auto" : "none",
