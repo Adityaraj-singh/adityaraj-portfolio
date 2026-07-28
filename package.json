@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "eslint-fix": "^1.0.3",
     "framer-motion": "^12.9.4",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.575.0",
     "maath": "^0.10.8",
     "next": "^16.1.6",

@@ -10,9 +10,10 @@ import {
   Mail,
   FileText,
   NotebookPen,
-  LucideIcon,
+  Circle,
+  type LucideIcon,
 } from "lucide-react";
-import { Circle } from "lucide-react";
+
 import { navItems } from "@/data/navigation";
 import { RadialButton } from "./RadialButton";
 
@@ -54,56 +55,61 @@ export function RadialMenu({ isOpen, onClose }: Props) {
   }, [isOpen, onClose]);
 
   const menuItems = navItems.filter((item) => item.title !== "Contact");
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Blur Overlay */}
 
+  return (
+    <>
+      {/* Overlay */}
+      <AnimatePresence>
+        {isOpen && (
           <motion.div
-            className="fixed inset-0 z-[90] bg-black/20 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-[90] bg-black/40 backdrop-blur-md md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.15,
+            }}
             onClick={onClose}
           />
+        )}
+      </AnimatePresence>
 
-          {/* Menu */}
+      {/* Radial Menu - ALWAYS mounted */}
+      <div
+        className="fixed z-[95] md:hidden"
+        style={{
+          right: "34%",
+          bottom: "12%",
+          pointerEvents: isOpen ? "auto" : "none",
+        }}
+      >
+        {menuItems.map((item, index) => {
+          const arcAngle = Math.PI * 0.77;
 
-          <div
-            className="fixed bottom-[calc(env(safe-area-inset-bottom)+76px)] z-[95] md:hidden"
-            style={{
-              right: "26%",
-              bottom: "12%",
-            }}
-          >
-            {menuItems.map((item, index) => {
-              const arcAngle = Math.PI * 0.69;
+          const step = (arcAngle / (menuItems.length - 1)) * 0.8;
 
-              const step = (arcAngle / (menuItems.length - 1)) * 0.8; // 82% of original spacing
+          const angle = Math.PI - step * index;
 
-              const angle = Math.PI - step * index;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius * -1;
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius * -1;
 
-              const Icon = iconMap[item.title] ?? Circle;
-              return (
-                <RadialButton
-                  key={item.id}
-                  x={x}
-                  y={y}
-                  index={index}
-                  href={item.href}
-                  label={item.title}
-                  icon={Icon}
-                  isOpen={isOpen}
-                  onNavigate={onClose}
-                />
-              );
-            })}
-          </div>
-        </>
-      )}
-    </AnimatePresence>
+          const Icon = iconMap[item.title] ?? Circle;
+
+          return (
+            <RadialButton
+              key={item.id}
+              x={x}
+              y={y}
+              index={index}
+              href={item.href}
+              label={item.title}
+              icon={Icon}
+              isOpen={isOpen}
+              onNavigate={onClose}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }

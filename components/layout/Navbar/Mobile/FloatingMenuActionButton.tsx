@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface FloatingMenuActionButtonProps {
@@ -23,13 +23,13 @@ export function FloatingMenuActionButton({ isOpen, onClick }: FloatingMenuAction
       }}
       transition={{
         type: "spring",
-        stiffness: 260,
-        damping: 20,
+        stiffness: 300,
+        damping: 24,
+        mass: 0.6,
       }}
       className={cn(
         "fixed right-6 bottom-[calc(env(safe-area-inset-bottom)+24px)] z-[100]",
         "flex h-16 w-16 items-center justify-center rounded-full",
-        "transition-shadow duration-200",
         "dark:border-white/10"
       )}
     >
@@ -39,51 +39,53 @@ export function FloatingMenuActionButton({ isOpen, onClick }: FloatingMenuAction
           opacity: isOpen ? 0.35 : 0,
           scale: isOpen ? 1.35 : 1,
         }}
-        transition={{ duration: 0.03 }}
+        transition={{
+          duration: 0.12,
+        }}
         className="absolute inset-0 rounded-full bg-primary blur-2xl"
       />
 
-      <AnimatePresence mode="wait">
-        <AnimatePresence mode="wait">
-          <div className="relative z-10 h-12 w-12">
-            {/* Closed */}
-            <motion.div
-              className="absolute inset-0"
-              animate={{
-                opacity: isOpen ? 0 : 1,
-                scale: isOpen ? 0.9 : 1,
-              }}
-              transition={{ duration: 0.15 }}
-            >
-              <Image
-                src="/icons/closed.svg"
-                alt="Open menu"
-                fill
-                className="pointer-events-none select-none"
-                priority
-              />
-            </motion.div>
+      <div className="relative z-10 h-12 w-12">
+        {/* Closed burger */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            opacity: isOpen ? 0 : 1,
+            scale: isOpen ? 0.9 : 1,
+          }}
+          transition={{
+            duration: 0.12,
+          }}
+        >
+          <Image
+            src="/icons/closed.svg"
+            alt="Open menu"
+            fill
+            className="pointer-events-none select-none"
+            priority
+          />
+        </motion.div>
 
-            {/* Open */}
-            <motion.div
-              className="absolute inset-0"
-              animate={{
-                opacity: isOpen ? 1 : 0,
-                scale: isOpen ? 1 : 0.9,
-              }}
-              transition={{ duration: 0.15 }}
-            >
-              <Image
-                src="/icons/open.svg"
-                alt="Close menu"
-                fill
-                className="pointer-events-none select-none"
-                priority
-              />
-            </motion.div>
-          </div>
-        </AnimatePresence>
-      </AnimatePresence>
+        {/* Open burger */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            opacity: isOpen ? 1 : 0,
+            scale: isOpen ? 1 : 0.9,
+          }}
+          transition={{
+            duration: 0.12,
+          }}
+        >
+          <Image
+            src="/icons/open.svg"
+            alt="Close menu"
+            fill
+            className="pointer-events-none select-none"
+            priority
+          />
+        </motion.div>
+      </div>
     </motion.button>
   );
 }
