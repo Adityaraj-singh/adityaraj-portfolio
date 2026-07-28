@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://adityarkatiyar.com"),
 
   // Basic metadata
-  applicationName: "Aditya Raj Singh Protfolio",
+  applicationName: "Aditya Raj Singh Portfolio",
   authors: [{ name: "Aditya Raj Singh" }],
+
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://adityarkatiyar.com",
     title: "Aditya Raj Singh | Software Engineer",
     description:
-      "Software Engineer building full-stack applications and decentralized systems. MS CS at Northeastern. Co-Chair of MIT Bitcoin Expo.",
+      "Software Engineer building full-stack applications and decentralized systems.",
     siteName: "Aditya Raj Singh",
     locale: "en_US",
     images: [
@@ -42,7 +43,10 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/iconss.png", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/iconss.png", type: "image/png" },
+    ],
     apple: { url: "/rename.png" },
   },
 
@@ -51,6 +55,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <ClientLayout>{children}</ClientLayout>;
 }

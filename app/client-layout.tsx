@@ -11,6 +11,7 @@ import { SmoothScrollProvider } from "@/components/shared/smooth-scroll-provider
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { FloatingSocials } from "@/components/shared/floating-socials";
+import { AppLoader } from "@/components/ui/app-loader";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,7 +39,11 @@ const fontDisplay = localFont({
   variable: "--font-display",
 });
 
-export function ClientLayout({ children }: { children: React.ReactNode }) {
+export function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -54,18 +59,26 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>
-            <div className="relative flex min-h-screen flex-col">
-              <Navbar />
-              <main className="flex-1 pt-16">{children}</main>
-              <Footer />
-            </div>
-            <FloatingSocials />
-            {/* <ScrollToTop /> */}
-            <ScrollProgress />
-            <SpeedInsights />
-            <Analytics />
-          </SmoothScrollProvider>
+          <AppLoader>
+            <SmoothScrollProvider>
+              <div className="relative flex min-h-screen flex-col">
+                <Navbar />
+
+                <main className="flex-1 pt-16">
+                  {children}
+                </main>
+
+                <Footer />
+              </div>
+
+              <FloatingSocials />
+
+              <ScrollProgress />
+
+              <SpeedInsights />
+              <Analytics />
+            </SmoothScrollProvider>
+          </AppLoader>
         </ThemeProvider>
       </body>
     </html>
