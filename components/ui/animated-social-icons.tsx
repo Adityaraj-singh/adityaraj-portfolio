@@ -8,10 +8,7 @@ interface AnimatedSocialIconProps {
   className?: string;
 }
 
-export function AnimatedSocialIcon({
-  src,
-  className = "h-6 w-6",
-}: AnimatedSocialIconProps) {
+export function AnimatedSocialIcon({ src, className = "h-6 w-6" }: AnimatedSocialIconProps) {
   const [animationData, setAnimationData] = useState<object | null>(null);
 
   useEffect(() => {
@@ -43,12 +40,5 @@ export function AnimatedSocialIcon({
     return <div className={className} />;
   }
 
-  return (
-    <Lottie
-      animationData={animationData}
-      loop
-      autoplay
-      className={className}
-    />
-  );
+  return <Lottie animationData={animationData} loop autoplay className={className} />;
 }

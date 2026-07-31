@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Minus,
-  Plus,
-  Square,
-  X,
-  TerminalSquare,
-  MousePointer2,
-} from "lucide-react";
+import { Minus, Plus, Square, X, TerminalSquare, MousePointer2 } from "lucide-react";
 import { Geist_Mono } from "next/font/google";
 
 const geistMono = Geist_Mono({
@@ -98,52 +91,40 @@ export function WindowsDescription() {
 
   return (
     <motion.div
-     initial={{
-  opacity: 0,
-  y: 20,
-  scaleX: 0.55,
-  scaleY: 0.85,
-}}
-animate={{
-  opacity: 0.75,
-  y: 0,
-  scaleX: expanded ? 1 : 0.55,
-  scaleY: expanded ? 1 : 0.85,
-}}
-    transition={{
-  opacity: {
-    duration: 0.6,
-    ease: "easeOut",
-  },
-  y: {
-    duration: 0.6,
-    ease: "easeOut",
-  },
-  scaleX: {
-    duration: 1.2,
-    ease: [0.22, 1, 0.36, 1],
-  },
-  scaleY: {
-    duration: 1.2,
-    ease: [0.22, 1, 0.36, 1],
-  },
-}}
+      initial={{
+        opacity: 0,
+        y: 20,
+        scaleX: 0.55,
+        scaleY: 0.85,
+      }}
+      animate={{
+        opacity: 0.75,
+        y: 0,
+        scaleX: expanded ? 1 : 0.55,
+        scaleY: expanded ? 1 : 0.85,
+      }}
+      transition={{
+        opacity: {
+          duration: 0.6,
+          ease: "easeOut",
+        },
+        y: {
+          duration: 0.6,
+          ease: "easeOut",
+        },
+        scaleX: {
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        },
+        scaleY: {
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      }}
       style={{
         transformOrigin: "left center",
       }}
-      className={`
-        ${geistMono.className}
-        relative
-        w-[360px]
-        max-w-[92vw]
-        overflow-hidden
-        rounded-xl
-        border border-white/10
-        bg-[#0c0c0c]
-        shadow-[0_20px_60px_rgba(0,0,0,0.45)]
-        sm:w-[650px]
-        sm:max-w-none
-      `}
+      className={` ${geistMono.className} relative w-[360px] max-w-[92vw] overflow-hidden rounded-xl border border-white/10 bg-[#0c0c0c] shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:w-[650px] sm:max-w-none`}
     >
       {/* Windows Terminal Header */}
       <div className="relative flex h-10 items-center justify-between bg-[#202020]">
@@ -153,9 +134,7 @@ animate={{
           <div className="ml-2 flex h-[34px] min-w-[145px] items-center gap-2 rounded-t-lg bg-[#0c0c0c] px-3">
             <TerminalSquare className="h-4 w-4 text-blue-400" />
 
-            <span className="text-xs font-semibold text-white">
-              portfolio
-            </span>
+            <span className="text-xs font-semibold text-white">portfolio</span>
 
             <X className="ml-auto h-3.5 w-3.5 text-zinc-400" />
           </div>
@@ -271,11 +250,9 @@ animate={{
                 duration: 0.15,
               },
             }}
-            className="pointer-events-none absolute right-[50px] top-[14px] z-50"
+            className="pointer-events-none absolute top-[14px] right-[50px] z-50"
           >
-            <MousePointer2
-              className="h-6 w-6 fill-white text-black drop-shadow-lg"
-            />
+            <MousePointer2 className="h-6 w-6 fill-white text-black drop-shadow-lg" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -285,19 +262,12 @@ animate={{
         {/* Prompt */}
         <div>
           <span className="text-blue-400">PS</span>{" "}
-          <span className="text-zinc-400">
-            C:\Users\Aditya\Portfolio&gt;
-          </span>
+          <span className="text-zinc-400">C:\Users\Aditya\Portfolio&gt;</span>
         </div>
 
         {/* Description */}
         <p className="mt-4 max-w-[590px] text-zinc-300">
-          {startTyping && (
-            <Typewriter
-              text={description}
-              speed={25}
-            />
-          )}
+          {startTyping && <Typewriter text={description} speed={25} />}
         </p>
       </div>
     </motion.div>

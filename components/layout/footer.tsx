@@ -4,9 +4,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Copyright, ExternalLink, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { socialLinks } from "@/data/social";
-import { getIconComponent } from "@/lib/icons";
+import { HeroSocialLinks } from "../ui/hero-animated-social-icons";
 
 export function Footer() {
   return (
@@ -70,28 +68,9 @@ export function Footer() {
           </div>
 
           {/* Connect */}
-          <div className="space-y-4">
+          <div>
             <h3 className="text-lg font-bold">Connect</h3>
-            <div className="flex flex-wrap gap-2">
-              {socialLinks.map((social) => (
-                <Button
-                  key={social.id}
-                  variant="ghost"
-                  size="icon"
-                  asChild
-                  className="rounded-full bg-muted/50 hover:bg-primary/10"
-                >
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.name}
-                  >
-                    {getIconComponent(social.icon)}
-                  </a>
-                </Button>
-              ))}
-            </div>
+            <HeroSocialLinks />
           </div>
 
           {/* Keyboard Shortcuts */}

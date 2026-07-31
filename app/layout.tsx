@@ -28,8 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://adityarkatiyar.com",
     title: "Aditya Raj Singh | Software Engineer",
-    description:
-      "Software Engineer building full-stack applications and decentralized systems.",
+    description: "Software Engineer building full-stack applications and decentralized systems.",
     siteName: "Aditya Raj Singh",
     locale: "en_US",
     images: [
@@ -43,10 +42,7 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/iconss.png", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.ico" }, { url: "/iconss.png", type: "image/png" }],
     apple: { url: "/rename.png" },
   },
 
@@ -55,10 +51,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <ClientLayout>{children}</ClientLayout>;
 }

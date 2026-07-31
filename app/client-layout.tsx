@@ -39,11 +39,7 @@ const fontDisplay = localFont({
   variable: "--font-display",
 });
 
-export function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -64,9 +60,7 @@ export function ClientLayout({
               <div className="relative flex min-h-screen flex-col">
                 <Navbar />
 
-                <main className="flex-1 pt-16">
-                  {children}
-                </main>
+                <main className="flex-1 pt-16">{children}</main>
 
                 <Footer />
               </div>
