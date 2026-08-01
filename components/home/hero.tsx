@@ -10,6 +10,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { AnimatedRole } from "../ui/animated-role";
 import { HeroSocialLinks } from "../ui/hero-animated-social-icons";
 import { WindowsDescription } from "../ui/windows-description";
+import { GameProvider } from "@/app/context/GameContext";
 export function Hero() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 800], [0, 40]);
@@ -38,9 +39,11 @@ export function Hero() {
                 <AnimatedRole />
                 @Divami Design Labs
                 {/* Social Links - Added here from navbar */}
+                <GameProvider>
                 <HeroSocialLinks />
                 {/* Windows Terminal */}
                 <WindowsDescription />
+                </GameProvider>
               </div>
 
               {/* Action Buttons */}

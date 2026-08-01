@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Copyright, ExternalLink, Heart } from "lucide-react";
 import { HeroSocialLinks } from "../ui/hero-animated-social-icons";
+import { GameProvider } from "@/app/context/GameContext";
 
 export function Footer() {
   return (
@@ -70,7 +71,9 @@ export function Footer() {
           {/* Connect */}
           <div>
             <h3 className="text-lg font-bold">Connect</h3>
-            <HeroSocialLinks />
+            <GameProvider>
+              <HeroSocialLinks />
+            </GameProvider>
           </div>
 
           {/* Keyboard Shortcuts */}

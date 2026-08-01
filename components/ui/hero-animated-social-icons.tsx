@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/tooltip";
 import { socialAnimations, socialLinks } from "@/data/social";
 import { AnimatedSocialIcon } from "../ui/animated-social-icons";
-
+import  {useGame}  from "@/app/context/GameContext";
 export const HeroSocialLinks = memo(function HeroSocialLinks() {
+  const { setGameStarted, setTerminalMode } = useGame();
   return (
     <TooltipProvider>
       <motion.div
@@ -43,17 +44,41 @@ export const HeroSocialLinks = memo(function HeroSocialLinks() {
           >
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  asChild
-                  className="rounded-full bg-muted/100 p-1.5 hover:bg-primary/100"
-                >
-                  <a href={social.url} target="_blank" rel="noopener noreferrer">
-                    <AnimatedSocialIcon src={socialAnimations[social.id]} className="h-10 w-10" />
-                  </a>
-                </Button>
-              </TooltipTrigger>
+  {social.id === "game" ? (
+    <Button
+      variant="ghost"
+      size="icon"
+     onClick={() => {
+  setGameStarted(true);
+  setTerminalMode("loading");
+}}
+      className="rounded-full bg-muted/100 p-1.5 hover:bg-primary/100"
+    >
+      <AnimatedSocialIcon
+        src={socialAnimations[social.id]}
+        className="h-10 w-10"
+      />
+    </Button>
+  ) : (
+    <Button
+      variant="ghost"
+      size="icon"
+      asChild
+      className="rounded-full bg-muted/100 p-1.5 hover:bg-primary/100"
+    >
+      <a
+        href={social.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <AnimatedSocialIcon
+          src={socialAnimations[social.id]}
+          className="h-10 w-10"
+        />
+      </a>
+    </Button>
+  )}
+</TooltipTrigger>
 
               <TooltipContent>{social.name}</TooltipContent>
             </Tooltip>

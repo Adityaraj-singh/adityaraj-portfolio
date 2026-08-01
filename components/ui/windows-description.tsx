@@ -1,13 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, Square, X, TerminalSquare, MousePointer2 } from "lucide-react";
 import { Geist_Mono } from "next/font/google";
-
+import {useGame } from "@/app/context/GameContext";
 const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
+
 
 const description =
   "Full Stack Software Developer with 5+ years of experience building scalable, high-performance applications using React, Angular, Node.js, Next.js, and AWS.";
@@ -16,11 +20,11 @@ function Typewriter({
   text,
   speed = 30,
   delay = 0,
-}: {
+}: Readonly<{
   text: string;
   speed?: number;
   delay?: number;
-}) {
+}>) {
   const [displayedText, setDisplayedText] = useState("");
   const [started, setStarted] = useState(false);
 
@@ -62,9 +66,52 @@ function Typewriter({
 }
 
 export function WindowsDescription() {
-  const [expanded, setExpanded] = useState(false);
-  const [startTyping, setStartTyping] = useState(false);
-  const [clicked, setClicked] = useState(false);
+
+const [expanded, setExpanded] = useState(false);
+const [startTyping, setStartTyping] = useState(false);
+const [clicked, setClicked] = useState(false);
+const {
+
+    terminalMode,
+    setTerminalMode
+} = useGame();
+
+const loadingSteps = [
+  "launch GamePlay",
+  "Loading assets...",
+  "Launching game..."
+];
+const [activeLoadingStep, setActiveLoadingStep] = useState<string | null>(null);
+
+useEffect(() => {
+  if (terminalMode !== "loading") {
+    setActiveLoadingStep(null);
+    return;
+  }
+
+  let index = 0;
+  let launchTimer: number | undefined;
+  setActiveLoadingStep(loadingSteps[index] ?? null);
+
+  const interval = window.setInterval(() => {
+    index++;
+
+    if (index >= loadingSteps.length) {
+      window.clearInterval(interval);
+      launchTimer = window.setTimeout(() => {
+        setTerminalMode("game");
+      }, 700);
+      return;
+    }
+
+    setActiveLoadingStep(loadingSteps[index] ?? null);
+  },1050);
+
+  return () => {
+    window.clearInterval(interval);
+    if (launchTimer) window.clearTimeout(launchTimer);
+  };
+}, [terminalMode, setTerminalMode]);
 
   useEffect(() => {
     // Cursor reaches the maximize button and clicks.
@@ -266,9 +313,44 @@ export function WindowsDescription() {
         </div>
 
         {/* Description */}
-        <p className="mt-4 max-w-[590px] text-zinc-300">
-          {startTyping && <Typewriter text={description} speed={25} />}
-        </p>
+     {terminalMode === "description" && (
+  <p className="mt-4 max-w-[590px] text-zinc-300">
+    {startTyping && (
+      <Typewriter
+        text={description}
+        speed={25}
+      />
+    )}
+  </p>
+)}
+{terminalMode === "loading" && (
+  <div className="mt-4 h-6 overflow-hidden text-green-400">
+    <AnimatePresence mode="wait" initial={false}>
+      {activeLoadingStep && (
+        <motion.div
+          key={activeLoadingStep}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.18 }}
+        >
+          {">"} {activeLoadingStep}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+)}
+{terminalMode === "game" && (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    className="mt-4 h-[220px] rounded-lg bg-black"
+  >
+    <div className="flex h-full items-center justify-center text-zinc-500">
+      Game Placeholder
+    </div>
+  </motion.div>
+)}
       </div>
     </motion.div>
   );

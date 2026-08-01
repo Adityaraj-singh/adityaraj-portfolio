@@ -1,4 +1,4 @@
-export type SocialId = "linkedin" | "github" | "email" | "phone";
+export type SocialId = "linkedin" | "github" | "email" | "phone" | "game";
 
 export interface SocialLink {
   id: SocialId;
@@ -65,6 +65,12 @@ export const socialLinks: SocialLink[] = [
     url: "tel:+918309631359",
     icon: "phone",
   },
+  {
+    id: "game",
+    name: "Phone",
+    url: "tel:+918309631359",
+    icon: "phone",
+  }
 ];
 
 export const socialAnimations: Record<SocialId, string> = {
@@ -72,4 +78,5 @@ export const socialAnimations: Record<SocialId, string> = {
   github: "/icons/Git.json",
   email: "/icons/email.json",
   phone: "/icons/Phone.json",
+  game: "/icons/Phone.json",
 };
