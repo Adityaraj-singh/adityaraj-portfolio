@@ -72,7 +72,6 @@ export function WindowsDescription() {
   const [startTyping, setStartTyping] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [activeLoadingStep, setActiveLoadingStep] = useState<string | null>(null);
-  const [loadingSequenceComplete, setLoadingSequenceComplete] = useState(false);
   const [isGameFrameReady, setGameFrameReady] = useState(false);
   const [shouldMountGameFrame, setShouldMountGameFrame] = useState(false);
   const [gameLaunchId, setGameLaunchId] = useState(0);
