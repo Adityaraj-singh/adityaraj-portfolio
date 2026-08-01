@@ -67,9 +67,9 @@ export const socialLinks: SocialLink[] = [
   },
   {
     id: "game",
-    name: "Phone",
+    name: "Game",
     url: "tel:+918309631359",
-    icon: "phone",
+    icon: "game",
   }
 ];
 
@@ -78,5 +78,5 @@ export const socialAnimations: Record<SocialId, string> = {
   github: "/icons/Git.json",
   email: "/icons/email.json",
   phone: "/icons/Phone.json",
-  game: "/icons/Phone.json",
+  game: "/icons/Controller.json",
 };
