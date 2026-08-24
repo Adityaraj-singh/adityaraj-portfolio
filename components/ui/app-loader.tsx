@@ -10,61 +10,39 @@ interface AppLoaderProps {
 export function AppLoader({ children }: AppLoaderProps) {
   const [progress, setProgress] = useState(0);
   const [pageLoaded, setPageLoaded] = useState(false);
+  const [minimumDurationComplete, setMinimumDurationComplete] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
 
-  // Wait for browser resources
   useEffect(() => {
-    const handleLoad = () => {
-      setPageLoaded(true);
-    };
-
-    if (document.readyState === "complete") {
-      setPageLoaded(true);
-    } else {
-      window.addEventListener("load", handleLoad);
-    }
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    const handleLoad = () => setPageLoaded(true);
+    if (document.readyState === "complete") setPageLoaded(true);
+    else window.addEventListener("load", handleLoad);
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  // Progress animation
+  useEffect(() => {
+    const timer = window.setTimeout(() => setMinimumDurationComplete(true), 6000);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const interval = window.setInterval(() => {
       setProgress((current) => {
-        if (current >= 95) {
-          return 95;
-        }
-
-        const increment = current < 30 ? 1.5 : current < 60 ? 1 : current < 80 ? 0.6 : 0.3;
-
-        return Math.min(current + increment, 95);
+        if (current >= 95) return 95;
+        return Math.min(current + 0.8, 95);
       });
-    }, 60);
-
-    return () => {
-      window.clearInterval(interval);
-    };
+    }, 50);
+    return () => window.clearInterval(interval);
   }, []);
 
-  // Complete after page load
   useEffect(() => {
-    if (!pageLoaded) return;
-
-    const completeTimer = window.setTimeout(() => {
-      setProgress(100);
-    }, 700);
-
-    const exitTimer = window.setTimeout(() => {
-      setShowLoader(false);
-    }, 1500);
-
+    if (!pageLoaded || !minimumDurationComplete) return;
+    setProgress(100);
+    const exitTimer = window.setTimeout(() => setShowLoader(false), 1000);
     return () => {
-      window.clearTimeout(completeTimer);
       window.clearTimeout(exitTimer);
     };
-  }, [pageLoaded]);
+  }, [minimumDurationComplete, pageLoaded]);
 
   return (
     <>
@@ -73,123 +51,78 @@ export function AppLoader({ children }: AppLoaderProps) {
           <motion.div
             key="loader"
             initial={{ opacity: 1 }}
-            exit={{
-              opacity: 0,
-              scale: 1.04,
-            }}
-            transition={{
-              duration: 0.65,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#080611]"
+            exit={{ opacity: 0, scale: 1.04, filter: "blur(8px)" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#DADEDE] text-zinc-900"
           >
-            {/* Background glow */}
-            <motion.div
-              className="absolute h-[450px] w-[450px] rounded-full bg-violet-500/20 blur-[120px]"
-              animate={{
-                scale: [1, 1.15, 1],
-                opacity: [0.25, 0.45, 0.25],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <div className="relative flex w-full flex-col items-center px-8">
-              {/* LOADING */}
-              <motion.h1
-                initial={{
-                  opacity: 0,
-                  y: -15,
-                  letterSpacing: "0.15em",
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  letterSpacing: "0.08em",
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: "easeOut",
-                }}
-                className="font-display mb-8 text-4xl font-bold text-white drop-shadow-[0_4px_12px_rgba(139,92,246,0.45)] sm:text-5xl"
+            <div className="relative w-full max-w-3xl px-8 sm:px-12">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55 }}
+                className="mb-4 text-center font-mono text-[10px] font-semibold tracking-[0.55em] text-zinc-400 sm:text-xs"
               >
-                LOADING
+                PREPARING THE JOURNEY
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.65, ease: "backOut" }}
+                className="font-display mb-16 text-center text-4xl font-black tracking-[0.08em] text-zinc-900 sm:text-6xl"
+              >
+                LET&apos;S GO
               </motion.h1>
 
-              {/* Outer progress container */}
-              <div className="relative h-[76px] w-full max-w-[520px] rounded-full border border-white/10 bg-white/10 p-[10px] shadow-[0_15px_50px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:h-[90px] sm:p-[12px]">
-                {/* Inner track */}
-                <div className="relative h-full w-full overflow-visible rounded-full bg-black/30 shadow-inner">
-                  {/* Progress fill */}
-                  <motion.div
-                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-violet-500 via-purple-400 to-violet-300 shadow-[0_0_30px_rgba(139,92,246,0.5)]"
-                    animate={{
-                      width: `${progress}%`,
-                    }}
-                    transition={{
-                      duration: 0.25,
-                      ease: "easeOut",
-                    }}
-                  />
-
-                  {/* Percentage bubble */}
-                  <motion.div
-                    animate={{
-                      left: `${progress}%`,
-                    }}
-                    transition={{
-                      duration: 0.25,
-                      ease: "easeOut",
-                    }}
-                    className="absolute top-1/2 z-20 flex h-[58px] w-[78px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-violet-400 font-mono text-lg font-bold text-[#100b1e] shadow-[0_8px_25px_rgba(139,92,246,0.45)] sm:h-[68px] sm:w-[92px] sm:text-xl"
-                    style={{
-                      // Prevent bubble from overflowing too much
-                      marginLeft: progress < 10 ? "25px" : progress > 90 ? "-25px" : "0px",
-                    }}
-                  >
-                    {progress}%
-                  </motion.div>
+              <div className="relative mx-auto w-full max-w-[680px]">
+                <div className="relative h-[26px] rounded-full border-2 border-zinc-900 bg-white p-[3px] shadow-[0_5px_16px_rgba(0,0,0,.12)]">
+                  <div className="relative h-full overflow-hidden rounded-full bg-zinc-100 shadow-[inset_0_1px_4px_rgba(0,0,0,.12)]">
+                    <motion.div
+                      className="absolute inset-y-0 left-0 rounded-full bg-zinc-900"
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        className="absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/80 to-transparent blur-[1px]"
+                        animate={{ left: ["-45%", "125%"] }}
+                        transition={{ duration: 1.1, repeat: Infinity, ease: "linear", repeatDelay: 0.35 }}
+                      />
+                    </motion.div>
+                  </div>
                 </div>
+
+                <motion.div
+                  className="pointer-events-none absolute top-1/2 z-10 h-[72px] w-[168px] -translate-x-[37%] -translate-y-[89%] bg-contain bg-center bg-no-repeat sm:h-[90px] sm:w-[210px]"
+                  style={{ backgroundImage: "url('/images/transparent_jeep_no_line.gif')" }}
+                  animate={{
+                    left: `${progress}%`,
+                    y: progress >= 95 ? [-2, -2, 35, 225] : -2,
+                    rotate: progress >= 95 ? [0, 0, 95] : 0,
+                    opacity: progress >= 95 ? [1, 1, 1, 0] : 1,
+                  }}
+                  transition={{
+                    left: { duration: 0.25, ease: "easeOut" },
+                    y: { duration: 0.85, times: [0, 0.16, 0.42, 1], ease: "easeIn" },
+                    rotate: { duration: 0.85, times: [0, 0.16, 1], ease: "easeIn" },
+                    opacity: { duration: 0.85, times: [0, 0.16, 0.72, 1], ease: "easeIn" },
+                  }}
+                />
               </div>
 
-              {/* Bottom status */}
-              <motion.p
-                animate={{
-                  opacity: [0.4, 1, 0.4],
-                }}
-                transition={{
-                  duration: 1.4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="mt-6 font-mono text-xs tracking-[0.25em] text-violet-200/60"
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+                className="mt-8 flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.32em] text-zinc-500 sm:text-xs"
               >
-                {progress > 90 ? "READY" : "GETTING INFO..."}
-              </motion.p>
+                <span className="h-2 w-2 rounded-full bg-zinc-900" />
+                {progress === 100 ? "READY" : `LOADING · ${Math.round(progress)}%`}
+              </motion.div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Mount application only after loader */}
       {!showLoader && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.995,
-          }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-          }}
-        >
+        <motion.div initial={{ opacity: 0, scale: 0.995 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, ease: "easeOut" }}>
           {children}
         </motion.div>
       )}
