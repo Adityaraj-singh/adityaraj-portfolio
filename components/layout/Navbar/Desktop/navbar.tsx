@@ -130,10 +130,10 @@ export function Navbar() {
             <ThreeDCard className="w-full">
               <div className="flex items-center justify-between">
                 {/* Logo */}
-                <div className="w-[160px]">
+                <div className="min-w-0 flex-1 md:w-[160px] md:flex-none">
                   <Link
                     href="/"
-                    className="font-display text-xl font-bold transition-colors hover:text-primary"
+                    className="font-display block whitespace-nowrap text-lg font-bold tracking-tight transition-colors hover:text-primary md:text-xl"
                   >
                     <motion.span
                       initial={{ opacity: 0, x: -20 }}
@@ -175,7 +175,7 @@ export function Navbar() {
                 </div>
 
                 {/* Right side — theme toggle + mobile hamburger */}
-                <div className="flex w-[160px] items-center justify-end gap-2">
+                <div className="flex w-auto shrink-0 items-center justify-end gap-2 md:w-[160px]">
                   <motion.div
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
