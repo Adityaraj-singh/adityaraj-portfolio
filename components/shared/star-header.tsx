@@ -13,7 +13,7 @@ export function StarHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden">
       <StarsCanvas />
-      {children}
+      <div className="relative z-10">{children}</div>
       {/* Multi-stop gradient fade — smooth dissolve into the page background */}
       <div
         className="pointer-events-none absolute right-0 bottom-0 left-0 z-0 h-56"

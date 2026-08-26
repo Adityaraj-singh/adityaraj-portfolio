@@ -13,6 +13,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
     { name: "TypeScript", category: "Languages", logoKey: "typescript" },
     { name: "Python", category: "Languages", logoKey: "python" },
     { name: "Java", category: "Languages", logoKey: "java" },
+    { name: "SQL", category: "Languages", logoKey: "mysql" }
   ],
   "Frameworks/Libraries": [
     { name: "React.js", category: "Frameworks/Libraries", logoKey: "react" },

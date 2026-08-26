@@ -42,13 +42,13 @@ export function SkillsShowcase() {
             onValueChange={(value) => setSelectedCategory(value as SkillCategory)}
             className="w-full"
           >
-            <div className="mb-8 flex justify-center">
-              <TabsList className="flex h-auto flex-wrap gap-2">
+            <div className="mb-6 flex justify-center sm:mb-8">
+              <TabsList className="grid h-auto w-full max-w-[360px] grid-cols-2 gap-1 p-1 sm:flex sm:h-12 sm:w-fit sm:max-w-none sm:flex-nowrap sm:gap-1.5 sm:p-1.5">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                    className="h-9 min-w-0 px-1.5 text-xs leading-tight sm:h-9 sm:flex-none sm:px-4 sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                   >
                     {category}
                   </TabsTrigger>

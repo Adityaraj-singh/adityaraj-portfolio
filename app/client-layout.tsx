@@ -1,6 +1,6 @@
 "use client";
 
-import { Inter as FontSans } from "next/font/google";
+import { Space_Grotesk as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/Navbar/Desktop/navbar";
@@ -15,7 +15,7 @@ import { AppLoader } from "@/components/ui/app-loader";
 
 const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-site",
 });
 
 const fontDisplay = localFont({

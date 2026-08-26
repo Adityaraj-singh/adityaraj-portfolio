@@ -76,6 +76,7 @@ export function RadialMenu({ isOpen, onClose }: Props) {
 
       {/* Radial Menu - ALWAYS mounted */}
       <div
+        id="mobile-navigation"
         className="fixed z-[95] md:hidden"
         style={{
           right: "34%",
