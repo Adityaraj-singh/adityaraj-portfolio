@@ -38,7 +38,7 @@ export function Achievements() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Achievementss
+            Achievements
           </h2>
           <p className="mx-auto mt-4 max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Recognition and milestones from my technical journey

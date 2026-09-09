@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
 
-const floatingSocials = socialLinks.filter((s) => s.id !== "phone");
+const floatingSocials = socialLinks.filter((s) => s.id !== "phone" && s.id !=="game");
 
 export function FloatingSocials() {
   return (
